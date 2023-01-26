@@ -1,0 +1,50 @@
+{
+   "617889497": {
+    "admin": true,
+    "requests": true,
+    "wordcloud": true,
+    "auto_ban": false,
+    "img_check": false,
+    "word_analyze": true
+  },
+  "15103072": {
+    "admin": true,
+    "requests": true,
+    "wordcloud": true,
+    "auto_ban": false,
+    "img_check": false,
+    "word_analyze": true
+  },
+  "450257325": {
+    "admin": true,
+    "requests": true,
+    "wordcloud": true,
+    "auto_ban": false,
+    "img_check": false,
+    "word_analyze": true
+  },
+  "596258487": {
+    "admin": true,
+    "requests": true,
+    "wordcloud": true,
+    "auto_ban": true,
+    "img_check": false,
+    "word_analyze": true
+  },
+  "635091764": {
+    "admin": true,
+    "requests": true,
+    "wordcloud": true,
+    "auto_ban": false,
+    "img_check": false,
+    "word_analyze": true
+  },
+  "704596623": {
+    "admin": true,
+    "requests": true,
+    "wordcloud": true,
+    "auto_ban": false,
+    "img_check": false,
+    "word_analyze": true
+  }
+}
