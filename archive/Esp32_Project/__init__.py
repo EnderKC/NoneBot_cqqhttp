@@ -1,7 +1,7 @@
 # -*- coding = utf-8 -*-
 import json
 import nonebot
-from nonebot.adapters.onebot.v11 import MessageSegment, Event, Bot, GroupMessageEvent, PrivateMessageEvent
+from nonebot.adapters.onebot.v11 import  Event,  GroupMessageEvent, PrivateMessageEvent
 from nonebot import on_command, logger, on_keyword
 from nonebot.adapters import Message
 from nonebot.internal.matcher import Matcher

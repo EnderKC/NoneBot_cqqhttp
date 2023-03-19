@@ -28,7 +28,7 @@ qb + 自己的QQ号
 注意：
 本功能仅用于学术研究，切勿将其用于违法，伸手必被抓！！！
         """
-        await qb.send(help_SGK_QB)
+        await qb.finish(help_SGK_QB)
     else:
         try:
             await qb.send("SGK少女祈祷中。。")
@@ -44,9 +44,9 @@ qb + 自己的QQ号
                     await qb.send(ret + phone + phonediqu, reply_message='true')
                     logger.info(phone)
             if data["status"] == 500:
-                await qb.send(at + data['message'], reply_message='true')
+                await qb.finish(at + data['message'], reply_message='true')
         except httpx.ConnectError:
-            await qb.send("网络异常，请通知管理员检查服务器网络")
+            await qb.finish("网络异常，请通知管理员检查服务器网络")
 
 
 async def get_data_qb(qq: str):

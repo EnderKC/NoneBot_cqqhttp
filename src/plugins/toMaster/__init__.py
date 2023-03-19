@@ -1,6 +1,7 @@
 # -*- coding = utf-8 -*-
 
 import nonebot
+from nonebot.matcher import Matcher
 from nonebot.adapters.onebot.v11 import MessageSegment, Event, Bot, GroupMessageEvent, PrivateMessageEvent, MessageEvent
 from nonebot import on_command, logger
 from nonebot.adapters import Message, Bot, Event
@@ -38,6 +39,7 @@ async def _(bot: Bot, event: MessageEvent, msg=ArgPlainText('msg')):
 消息：{msg}
 id：{event.message_id}'''
         await bot.call_api('send_private_msg', message=msg_p, user_id=QQ_master)
+        master.stop_propagation()  # 阻断事件传播
     if isinstance(event, GroupMessageEvent):
         msg_p = f'''来自群聊：{event.group_id}
 QQ:{event.user_id}
@@ -46,6 +48,7 @@ QQ:{event.user_id}
 消息：{msg}
 id：{event.message_id}'''
         await bot.call_api('send_private_msg', message=msg_p, user_id=QQ_master)
+        master.stop_propagation()  # 阻断事件传播
 
 
 _help = '''==向开发者反应==

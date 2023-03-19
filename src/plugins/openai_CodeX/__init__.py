@@ -8,10 +8,14 @@ from nonebot.adapters import Message
 from nonebot.internal.matcher import Matcher
 from nonebot.internal.params import ArgPlainText
 from nonebot.params import CommandArg
+from openaiCofig.apiKeyConfig import api_key
+
+logger.info(api_key)
+openai.api_key = api_key
+
+
 
 code = on_command('cc', aliases={'CodexC++', 'C++代码'}, priority=10)
-
-openai.api_key = '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'
 
 
 @code.handle()
@@ -38,9 +42,12 @@ async def _(bot: Bot, event: Event, cc=ArgPlainText('cc')):
             presence_penalty=0,
             stop=["；"]
         )
-        await code.send(MessageSegment.text(response["choices"][0]['text']) + '\n' + MessageSegment.at(
+        await code.finish(MessageSegment.text(response["choices"][0]['text']) + '\n' + MessageSegment.at(
             event.get_user_id) + MessageSegment.text("代码生成完毕，请食用~"))
-    except openai.error.APIConnectionError:
+    # except openai.error.APIConnectionError:
+    #     await code.send("网络异常，请使用[zr]命令联系管理员检查服务器网络")
+    except Exception as e :
+        logger.debug(e)
         await code.send("网络异常，请使用[zr]命令联系管理员检查服务器网络")
 
 

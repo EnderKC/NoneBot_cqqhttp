@@ -9,10 +9,10 @@ from nonebot.adapters import Message
 from nonebot.internal.matcher import Matcher
 from nonebot.internal.params import ArgPlainText
 from nonebot.params import CommandArg
-
+from openaiCofig.apiKeyConfig import api_key
 oi = on_command('oi', aliases={'autoimg', '生成图片'}, priority=10)
 
-openai.api_key = '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'
+openai.api_key = api_key
 
 
 @oi.handle()

@@ -42,7 +42,7 @@ async def _(bot: Bot, event: Event, tags=ArgPlainText('tag')):
             await setu.send("涩涩少女祈祷中....")
             logger.info(data['urls'])
             logger.info(data['tags'])
-            await setu.send(
+            await setu.finish(
                 MessageSegment.image(data['urls']['regular']) + '\n' + "标题：" +
                 MessageSegment.text(data['title']) + '\n' + "作品pid: " +
                 MessageSegment.text(data['pid']) + '\n' + '作者：' +
@@ -50,12 +50,12 @@ async def _(bot: Bot, event: Event, tags=ArgPlainText('tag')):
                 MessageSegment.at(event.user_id)
             )
         except nonebot.adapters.onebot.v11.exception.NetworkError:
-            await setu.send("发送超时（原因可能是图片体积太大，稍等一会可能会发送成功）")
+            await setu.finish("发送超时（原因可能是图片体积太大，稍等一会可能会发送成功）")
         except httpx.ConnectError:
-            await setu.send("网络异常，请通知管理员检查服务器网络")
+            await setu.finish("网络异常，请通知管理员检查服务器网络")
         except Exception as e:
             logger.error(f'机器人被风控了{e}')
-            await setu.send('消息可能被风控，请稍后再试，或者私聊机器人')
+            await setu.finish('消息可能被风控，请稍后再试，或者私聊机器人')
     if isinstance(event, PrivateMessageEvent):  # 如果私聊
         if 'help' in tags:
             await setu.finish(MessageSegment.at(event.user_id) + '\n' + _help)
@@ -71,19 +71,19 @@ async def _(bot: Bot, event: Event, tags=ArgPlainText('tag')):
             await setu.send("涩涩少女祈祷中....")
             logger.info(data['urls'])
             logger.info(data['tags'])
-            await setu.send(
+            await setu.finish(
                 MessageSegment.image(data['urls']['regular']) + '\n' + "标题：" +
                 MessageSegment.text(data['title']) + '\n' + "作品pid: " +
                 MessageSegment.text(data['pid']) + '\n' + '作者：' +
                 MessageSegment.text(data['author'])
             )
         except nonebot.adapters.onebot.v11.exception.NetworkError:
-            await setu.send("发送超时（原因可能是图片体积太大，稍等一会可能会发送成功）")
+            await setu.finish("发送超时（原因可能是图片体积太大，稍等一会可能会发送成功）")
         except httpx.ConnectError:
-            await setu.send("网络异常，请通知管理员检查服务器网络")
+            await setu.finish("网络异常，请通知管理员检查服务器网络")
         except Exception as e:
             logger.error(f'机器人被风控了{e}')
-            await setu.send('消息可能被风控，请稍后再试，或者私聊机器人')
+            await setu.finish('消息可能被风控，请稍后再试，或者私聊机器人')
 
 
 async def get_data(tag_json: dict):
@@ -100,7 +100,7 @@ async def _(bot: Bot, event: Event):
         await xjj.send(MessageSegment.image('https://img.moehu.org/pic.php?id=xjj'))
         await xjj.finish("请注意身体", reply_message='true')
     except httpx.ConnectError:
-        await setu.send("网络异常，请通知管理员检查服务器网络")
+        await setu.finish("网络异常，请通知管理员检查服务器网络")
 
 
 @df.handle()
