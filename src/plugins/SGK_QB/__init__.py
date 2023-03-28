@@ -8,7 +8,7 @@ from nonebot.internal.matcher import Matcher
 from nonebot.internal.params import ArgPlainText
 from nonebot.params import CommandArg
 
-qb = on_command("QQ号查询", aliases={'QB', 'qb'}, priority=6)
+qb = on_command("QQ号查询", aliases={'QB', 'qb'}, priority=6,block=True)
 
 
 @qb.handle()
