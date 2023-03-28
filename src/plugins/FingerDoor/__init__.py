@@ -1,7 +1,8 @@
 # -*- coding = utf-8 -*-
 import json
 import nonebot
-from nonebot.adapters.onebot.v11 import  Event,  GroupMessageEvent, PrivateMessageEvent
+from nonebot.permission import SUPERUSER  # 可以设置权限 超级管理员
+from nonebot.adapters.onebot.v11 import Event,  GroupMessageEvent, PrivateMessageEvent
 from nonebot import on_command, logger, on_keyword
 from nonebot.adapters import Message
 from nonebot.internal.matcher import Matcher
@@ -11,9 +12,9 @@ from paho.mqtt import client as mqtt_client
 
 op_door = on_keyword({'开门'}, priority=10)
 
-reg = on_command('注册', priority=11)
+reg = on_command('注册', priority=11, permission=SUPERUSER, block=True)  # 仅限超级管理员注册宿舍信息 block 控制事件在执行后阻断程序
 
-broker = '101.43.168.81'
+broker = 'broker.emqx.io'
 port = 1883
 topic = "OpenTheDoor"
 # generate client ID with pub prefix randomly
